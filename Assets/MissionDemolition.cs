@@ -13,6 +13,7 @@ public class MissionDemolition : MonoBehaviour {
     public Text uitLevel;
     public Text uitShots;
     public Text uitButton;
+    public Text nextbutton;
     public Vector3 castlePos;
     public GameObject[] castles;
 
@@ -95,7 +96,7 @@ public class MissionDemolition : MonoBehaviour {
                 uitButton.text = "Show Castle";
                 break;
             case "Show Castle":
-                FollowCam.POI = null;
+                FollowCam.POI = GameObject.Find("S.Castle");
                 uitButton.text = "Show Both";
                 break;
             case "Show Both":
@@ -103,6 +104,12 @@ public class MissionDemolition : MonoBehaviour {
                 uitButton.text = "Show Slingshot";
                 break;
         }
+    }
+    public void nextLevel()
+    {
+        mode = GameMode.levelEnd;
+        SwitchView("Show Both");
+        Invoke("NextLevel", 2f);
     }
     public static void ShotFired()
     {
